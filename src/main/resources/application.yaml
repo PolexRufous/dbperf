@@ -1,0 +1,44 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: testentity
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-nodes: localhost:9300
+      cluster-name: testentity
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testentity
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+      jdbc:
+        lob:
+          non_contextual_creation: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: false
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+
+#Logging
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: INFO
+        test: INFO
+        core: INFO
+      hibernate: INFO
+      elasticsearch: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+
